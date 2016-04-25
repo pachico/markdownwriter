@@ -1,0 +1,49 @@
+{
+    "name": "pachico/markdownwriter",
+    "type": "library",
+    "description": "Markdown writer.",
+    "keywords": [
+        "pachico",
+        "markdownwriter",
+        "markdown",
+        "writer"
+    ],
+    "homepage": "https://github.com/pachico/markdownwriter",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mariano F.co Benítez Mulet",
+            "email": "nanodevel@gmail.com",
+            "homepage": "https://github.com/pachico",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "~5.3|~7.0",
+        "webmozart/assert": "1.0.2",
+        "league/flysystem": "1.0.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.*",
+        "squizlabs/php_codesniffer": "^2.5",
+        "codacy/coverage": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pachico\\MarkdownWriter\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pachico\\MarkdownWriter\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}
