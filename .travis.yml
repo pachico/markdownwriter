@@ -7,7 +7,8 @@ php:
     - hhvm
     - nightly
 before_script:
-    - composer self-update
+    - travis_retry composer self-update
+script:
     - composer validate --strict
     - composer update --no-interaction --prefer-lowest
     - composer dumpautoload -o
@@ -15,7 +16,6 @@ before_script:
     - vendor/bin/phpcs --standard=psr2 tests/
     - vendor/bin/phpunit
     - pip install --user codecov
-script: vendor/bin/phpunit -c test/phpunit.xml
 after_success:
     - bash <(curl -s https://codecov.io/bash)
-    - php vendor/bin/codacycoverage clover test/code_coverage/clover.xml
+    - php vendor/bin/codacycoverage clover build/logs/clover.xml
