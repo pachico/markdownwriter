@@ -11,6 +11,18 @@ $document = new MW\Document();
 
 // Add Title
 $document->add(new Element\H1('MarkdownWriter'));
+
+// Add badges
+$document->add(new Element\Paragraph(
+    new Element\Image(
+        'https://travis-ci.org/pachico/markdownwriter.svg?branch=master',
+        'https://travis-ci.org/pachico/markdownwriter',
+        'Build Status',
+        'Markdown Writer'
+    )
+));
+
+//
 $document->add(
     (new Element\Paragraph())->addContent('Php package to write markdown documents.')
 );
@@ -60,7 +72,7 @@ $document->add(new Element\Paragraph(
     ' and ',
     new Element\Link('CONDUCT', 'CONDUCT.md'),
     ' for details.'
-    ));
+));
 
 // Add Security
 $document->add(new Element\H2('Security'));
@@ -69,8 +81,13 @@ $document->add(new Element\Paragraph('If you discover any security related issue
 
 // Add Credits
 $document->add(new Element\H2('Credits'));
-$document->add((new Element\Lizt())
-    ->addUnorderedItem(new Element\Link('Mariano F.co Benítez Mulet', 'https://github.com/pachico'))
+$document->add(
+    (new Element\Lizt())->addUnorderedItem(
+        new Element\Link(
+            'Mariano F.co Benítez Mulet',
+            'https://github.com/pachico'
+        )
+    )
     ->addUnorderedItem(new Element\Link('All Contributors', 'link-contributors'))
 );
 

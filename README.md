@@ -1,5 +1,7 @@
 # MarkdownWriter
 
+[![Build Status](https://travis-ci.org/pachico/markdownwriter.svg?branch=master)](https://travis-ci.org/pachico/markdownwriter "Markdown Writer")
+
 Php package to write markdown documents.
 
 **What it is:** a markdown writer.
