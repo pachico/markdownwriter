@@ -14,6 +14,6 @@ class BlockquoteTest extends \PHPUnit_Framework_TestCase
         $content = $blockquote->toMarkDown();
 
         // Assert
-        $this->assertSame('> Something important.' . "\n\n", $content);
+        $this->assertSame('> Something important.' . PHP_EOL . PHP_EOL, $content);
     }
 }

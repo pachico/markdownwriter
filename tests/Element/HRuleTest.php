@@ -14,7 +14,7 @@ class HRuleTest extends \PHPUnit_Framework_TestCase
         $content = $hRule->toMarkDown();
 
         // Assert
-        $this->assertSame('___' . "\n\n", $content);
+        $this->assertSame('___' . PHP_EOL . PHP_EOL, $content);
     }
 
     public function testTypes()

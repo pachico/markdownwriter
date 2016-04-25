@@ -2,9 +2,9 @@
 
 Php package to write markdown documents.
 
-**What it is: ** a markdown writer.
+**What it is:** a markdown writer.
 
-**What it isn't: ** a markdown parser.
+**What it isn't:** a markdown parser.
 
 ## Install
 

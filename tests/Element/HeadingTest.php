@@ -21,7 +21,7 @@ class HeadingTest extends \PHPUnit_Framework_TestCase
             $content = $element->toMarkdown();
 
             // Assert
-            $this->assertSame(str_pad('', $heading, '#') . ' My heading' . "\n\n", $content);
+            $this->assertSame(str_pad('', $heading, '#') . ' My heading' . PHP_EOL . PHP_EOL, $content);
         }
     }
 }

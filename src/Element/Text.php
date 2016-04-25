@@ -31,11 +31,11 @@ class Text implements ElementInterface, InlinableInterface
     {
         switch ($this->decorator) {
             case static::BOLD:
-                return '**' . $this->content . '** ';
+                return '**' . trim($this->content) . '** ';
             case static::ITALIC:
-                return '_' . $this->content . '_ ';
+                return '_' . trim($this->content) . '_ ';
             case static::STRIKETHROUGH:
-                return '--' . $this->content . '-- ';
+                return '--' . trim($this->content) . '-- ';
             default:
                 return $this->content . ' ';
         }
