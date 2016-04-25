@@ -44,7 +44,7 @@ class Document
     /**
      * @param \League\Flysystem\AdapterInterface $adapter
      * @param string $fileName
-     * 
+     *
      * @return bool
      */
     public function save(Flysystem\AdapterInterface $adapter, $fileName)
