@@ -47,13 +47,27 @@ $document->add(new El\H2('Usage'));
 //
 $document->add(new El\H3('Headers'));
 $document->add(new El\Code(file_get_contents($examplesFolder . '02-headers.php'), El\Code::PHP));
-$document->add(new El\Paragraph('Will output'));
+$document->add(new El\Paragraph('Will output:'));
 $document->add(new El\Code(file_get_contents($examplesFolder . '02-headers.md')));
 //
 $document->add(new El\H3('Paragraph'));
 $document->add(new El\Code(file_get_contents($examplesFolder . '03-paragraph.php'), El\Code::PHP));
-$document->add(new El\Paragraph('Will output'));
+$document->add(new El\Paragraph('Will output:'));
 $document->add(new El\Code(file_get_contents($examplesFolder . '03-paragraph.md')));
+//
+$document->add(new El\H3('Blackquote'));
+$document->add(new El\Code(file_get_contents($examplesFolder . '04-blockquote.php'), El\Code::PHP));
+$document->add(new El\Paragraph('Will output:'));
+$document->add(new El\Code(file_get_contents($examplesFolder . '04-blockquote.md')));
+//
+$document->add(new El\H3('Code'));
+$document->add(new El\Code(file_get_contents($examplesFolder . '05-code.php'), El\Code::PHP));
+$document->add(new El\Paragraph(new El\Link('Will output:', 'examples/05-code.md')));
+//
+$document->add(new El\H3('Horizontal rule'));
+$document->add(new El\Code(file_get_contents($examplesFolder . '06-hrule.php'), El\Code::PHP));
+$document->add(new El\Paragraph('Will output:'));
+$document->add(new El\Code(file_get_contents($examplesFolder . '06-hrule.md')));
 //
 $document->add(new El\H3('Complete example'));
 $document->add(new El\Code(file_get_contents($examplesFolder . '01-simple.php'), El\Code::PHP));

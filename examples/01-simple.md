@@ -14,4 +14,3 @@ Time to wrap up. _Something italic_
 ## Some subtitle too
 
 ***
-

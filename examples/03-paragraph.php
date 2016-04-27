@@ -26,7 +26,5 @@ $paragraph2->addContent(new El\Text('Fifth span of text added to second paragrap
 $paragraph2->addContent(new El\Text('Sixth span of text added to second paragraph as decorated instance of Text.'));
 $document->add($paragraph2);
 
-
-
 $adapter = new Adapter\Local(__DIR__);
 $document->save($adapter, basename(__FILE__, 'php') . 'md');

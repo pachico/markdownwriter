@@ -16,29 +16,20 @@ namespace Pachico\MarkdownWriter\Element;
  *
  * @see http://daringfireball.net/projects/markdown/syntax#blockquote
  */
-class Blockquote implements ElementInterface
+class Blockquote extends AbstractInliner implements ElementInterface
 {
 
     /**
-     * @var string Content of blockquote
-     */
-    private $content;
-
-    /**
-     * Creates instance of Blockquote
-     *
-     * @param string $content Content of blockquote
-     */
-    public function __construct($content)
-    {
-        $this->content = trim($content);
-    }
-
-    /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function toMarkDown()
     {
-        return '> ' . $this->content . PHP_EOL . PHP_EOL;
+        $content = '> ';
+
+        foreach ($this->content as $element) {
+            $content .= $element->toMarkDown();
+        }
+
+        return rtrim($content) . PHP_EOL . PHP_EOL;
     }
 }
