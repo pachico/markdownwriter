@@ -1,27 +1,48 @@
 <?php
 
+/**
+ * This file is part of Pachico/MarkdownWriter. (https://github.com/pachico/markdownwriter)
+ *
+ * @link https://github.com/pachico/markdownwriter for the canonical source repository
+ * @copyright Copyright (c) 2016 Mariano F.co Benítez Mulet. (https://github.com/pachico/)
+ * @author Mariano F.co Benítez Mulet <pachicodev@gmail.com>
+ * @license https://raw.githubusercontent.com/pachico/markdownwriter/master/LICENSE.md MIT
+ */
+
 namespace Pachico\MarkdownWriter\Element;
 
+use Pachico\MarkdownWriter\Element\Text;
+
+/**
+ * List of Inlineable elements.
+ * It's called Lizt and not List because the latter is a reserved word in PHP
+ *
+ * @see http://daringfireball.net/projects/markdown/syntax#list
+ */
 class Lizt implements ElementInterface
 {
+
     const ORDERED = 'ordered';
     const UNORDERED = 'unordered';
     const LEVEL_INDENTATION = '  ';
 
     /**
-     * @var array
+     * @var array|InlineableInterface List elements
      */
     private $content = [];
+
     /**
      * @var int The current indentation level
      */
     private $currentLevel = 0;
 
     /**
-     * @param \Pachico\MarkdownWriter\Element\Text $content
-     * @param string $type
+     * Adds to the list an element
      *
-     * @return \Pachico\MarkdownWriter\Element\Lizt
+     * @param Text $content Content of list element
+     * @param string $type Type of list element
+     *
+     * @return Lizt
      * @throws \InvalidArgumentException
      */
     private function addItem($content, $type)
@@ -44,9 +65,11 @@ class Lizt implements ElementInterface
     }
 
     /**
-     * @param mixed string|Text $content
+     * Adds to the list an UNORDERED element
      *
-     * @return \Pachico\MarkdownWriter\Element\Lizt
+     * @param string|Text $content Content of list element
+     *
+     * @return Lizt
      */
     public function addUnorderedItem($content)
     {
@@ -56,9 +79,11 @@ class Lizt implements ElementInterface
     }
 
     /**
-     * @param mixed string|Text $content
+     * Adds to the list an ORDERED element
      *
-     * @return \Pachico\MarkdownWriter\Element\Lizt
+     * @param string|Text $content Content of list element
+     *
+     * @return Lizt
      */
     public function addOrderedItem($content)
     {
@@ -68,7 +93,9 @@ class Lizt implements ElementInterface
     }
 
     /**
-     * @return \Pachico\MarkdownWriter\Element\Lizt
+     * Moves the cursor of the list one element to the left/up
+     *
+     * @return Lizt
      *
      * @throws \RuntimeException
      */
@@ -77,13 +104,16 @@ class Lizt implements ElementInterface
         if (($this->currentLevel - 1) < 0) {
             throw new \RuntimeException('Cannot decrease list indentation level below 0.');
         }
+
         $this->currentLevel--;
 
         return $this;
     }
 
     /**
-     * @return \Pachico\MarkdownWriter\Element\Lizt
+     * Moves the cursor of the list one element to the right/down
+     *
+     * @return Lizt
      */
     public function levelDown()
     {
@@ -92,6 +122,9 @@ class Lizt implements ElementInterface
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function toMarkDown()
     {
         $content = [];

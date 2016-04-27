@@ -1,25 +1,46 @@
 <?php
 
+/**
+ * This file is part of Pachico/MarkdownWriter. (https://github.com/pachico/markdownwriter)
+ *
+ * @link https://github.com/pachico/markdownwriter for the canonical source repository
+ * @copyright Copyright (c) 2016 Mariano F.co Benítez Mulet. (https://github.com/pachico/)
+ * @author Mariano F.co Benítez Mulet <pachicodev@gmail.com>
+ * @license https://raw.githubusercontent.com/pachico/markdownwriter/master/LICENSE.md MIT
+ */
+
 namespace Pachico\MarkdownWriter\Element;
 
+/**
+ * Span of code for generic or specific languages
+ *
+ * @see http://daringfireball.net/projects/markdown/syntax#code
+ */
 class Code implements ElementInterface
 {
-    const CODE_JAVASCRIPT = 'javascript';
-    const CODE_PHP = 'php';
+
+    const JAVASCRIPT = 'javascript';
+    const PHP = 'php';
+    const RUBY = 'ruby';
+    const PYTHON = 'python';
+    const BASH = 'bash';
 
     /**
-     * @var string
+     * @var string Content of element
      */
     private $content = '';
+
     /**
      *
-     * @var string
+     * @var string Language of span of code
      */
     private $language = '';
 
     /**
-     * @param string $content
-     * @param string $language
+     * Creates instance of Code
+     *
+     * @param string $content Content of element
+     * @param string $language Language of span of code
      */
     public function __construct($content, $language = null)
     {
@@ -31,7 +52,7 @@ class Code implements ElementInterface
     }
 
     /**
-     * {inheritDoc}
+     * {@inheritDoc}
      */
     public function toMarkDown()
     {

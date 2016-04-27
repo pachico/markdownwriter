@@ -12,22 +12,27 @@
 namespace Pachico\MarkdownWriter\Element;
 
 /**
- * Blockquote element
+ * Headers for documents
  *
- * @see http://daringfireball.net/projects/markdown/syntax#blockquote
+ * @see http://daringfireball.net/projects/markdown/syntax#header
  */
-class Blockquote implements ElementInterface
+class AbstractHeader implements ElementInterface
 {
 
     /**
-     * @var string Content of blockquote
+     * @var string Content of heading
      */
-    private $content;
+    private $content = '';
 
     /**
-     * Creates instance of Blockquote
+     * @var string Prefix of heading
+     */
+    protected $prefix = '';
+
+    /**
+     * Creates instance of Header
      *
-     * @param string $content Content of blockquote
+     * @param string $content Content of the header
      */
     public function __construct($content)
     {
@@ -37,8 +42,10 @@ class Blockquote implements ElementInterface
     /**
      * {@inheritdoc}
      */
-    public function toMarkDown()
+    public function toMarkdown()
     {
-        return '> ' . $this->content . PHP_EOL . PHP_EOL;
+        $content = $this->prefix . ' ' . $this->content;
+
+        return trim($content) . PHP_EOL . PHP_EOL;
     }
 }

@@ -16,7 +16,7 @@ class CodeTest extends \PHPUnit_Framework_TestCase
 use Pachico\MarkdownWriter as MW;
 use Pachico\MarkdownWriter\Element\Code;
 EOD;
-        $code = new Code($code, Code::CODE_PHP);
+        $code = new Code($code, Code::PHP);
 
         // Act
         $content = $code->toMarkDown();

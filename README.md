@@ -71,7 +71,7 @@ Please see  [CONTRIBUTING](CONTRIBUTING.md) and  [CONDUCT](CONDUCT.md) for detai
 
 ## Security
 
-If you discover any security related issues, please email nanodevel@gmail.com instead of using the issue tracker.
+If you discover any security related issues, please email pachicodev@gmail.com instead of using the issue tracker.
 
 ## Credits
 
