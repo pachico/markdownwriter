@@ -1,17 +1,34 @@
 <?php
 
+/**
+ * This file is part of Pachico/MarkdownWriter. (https://github.com/pachico/markdownwriter)
+ *
+ * @link https://github.com/pachico/markdownwriter for the canonical source repository
+ * @copyright Copyright (c) 2016 Mariano F.co Benítez Mulet. (https://github.com/pachico/)
+ * @author Mariano F.co Benítez Mulet <pachicodev@gmail.com>
+ * @license https://raw.githubusercontent.com/pachico/markdownwriter/master/LICENSE.md MIT
+ */
+
 namespace Pachico\MarkdownWriter\Element;
 
-use Webmozart\Assert\Assert;
+use Pachico\MarkdownWriter\Element\ElementInterface;
 
+/**
+ * One or more consecutive lines of text
+ *
+ * @see http://daringfireball.net/projects/markdown/syntax#p
+ */
 class Paragraph implements ElementInterface
 {
+
     /**
-     * @var type
+     * @var array|InlinableInterface Content of the paragraph
      */
     private $content = [];
 
     /**
+     * Creates instance of Paragraph
+     *
      * @throws \InvalidArgumentException
      */
     public function __construct()
@@ -29,9 +46,11 @@ class Paragraph implements ElementInterface
     }
 
     /**
-     * @param \Pachico\MarkdownWriter\Element\ElementInterface $content
+     * Adds a text to the paragraph
      *
-     * @return \Pachico\MarkdownWriter\Element\Paragraph
+     * @param string|ElementInterface $content Content to be added
+     *
+     * @return Paragraph
      */
     public function addContent($content)
     {
@@ -47,7 +66,7 @@ class Paragraph implements ElementInterface
     }
 
     /**
-     * {inheritDoc}
+     * {@inheritDoc}
      */
     public function toMarkDown()
     {

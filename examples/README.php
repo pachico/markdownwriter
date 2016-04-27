@@ -46,7 +46,7 @@ $document->add(new Element\Code('$ composer require pachico/markdownwriter'));
 
 // Add Usage
 $document->add(new Element\H2('Usage'));
-$document->add(new Element\Code(file_get_contents(__DIR__ . '/01-simple.php'), Element\Code::CODE_PHP));
+$document->add(new Element\Code(file_get_contents(__DIR__ . '/01-simple.php'), Element\Code::PHP));
 $document->add(new Element\Paragraph(
     'This README file has been written using this package.',
     'Check the examples folder for more details.'
@@ -72,22 +72,17 @@ $document->add(new Element\Paragraph(
     ' and ',
     new Element\Link('CONDUCT', 'CONDUCT.md'),
     ' for details.'
-));
+    ));
 
 // Add Security
 $document->add(new Element\H2('Security'));
 $document->add(new Element\Paragraph('If you discover any security related issues, '
-    . 'please email nanodevel@gmail.com instead of using the issue tracker.'));
+    . 'please email pachicodev@gmail.com instead of using the issue tracker.'));
 
 // Add Credits
 $document->add(new Element\H2('Credits'));
-$document->add(
-    (new Element\Lizt())->addUnorderedItem(
-        new Element\Link(
-            'Mariano F.co Benítez Mulet',
-            'https://github.com/pachico'
-        )
-    )
+$document->add((new Element\Lizt())
+    ->addUnorderedItem(new Element\Link('Mariano F.co Benítez Mulet', 'https://github.com/pachico'))
     ->addUnorderedItem(new Element\Link('All Contributors', 'link-contributors'))
 );
 

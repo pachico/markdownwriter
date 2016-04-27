@@ -1,33 +1,53 @@
 <?php
 
+/**
+ * This file is part of Pachico/MarkdownWriter. (https://github.com/pachico/markdownwriter)
+ *
+ * @link https://github.com/pachico/markdownwriter for the canonical source repository
+ * @copyright Copyright (c) 2016 Mariano F.co Benítez Mulet. (https://github.com/pachico/)
+ * @author Mariano F.co Benítez Mulet <pachicodev@gmail.com>
+ * @license https://raw.githubusercontent.com/pachico/markdownwriter/master/LICENSE.md MIT
+ */
+
 namespace Pachico\MarkdownWriter\Element;
 
 use Webmozart\Assert\Assert;
 
+/**
+ * Image element, which can optionally have link, alt and title
+ *
+ * @see http://daringfireball.net/projects/markdown/syntax#img
+ */
 class Image implements ElementInterface, InlinableInterface
 {
+
     /**
-     * @var string
+     * @var string Path to the image
      */
     private $path;
+
     /**
-     * @var string
+     * @var string Url of the link
      */
     private $link;
+
     /**
-     * @var string
+     * @var string Alt text
      */
     private $alt;
+
     /**
-     * @var string
+     * @var string Title text
      */
     private $title;
 
     /**
-     * @param string $path
-     * @param string $link
-     * @param string $alt
-     * @param string $title
+     * Creates instance of Image
+     *
+     * @param string $path Path to the image
+     * @param string $link Url of the link
+     * @param string $alt Alt text
+     * @param string $title Title text
      *
      * @throws \InvalidArgumentException
      */
@@ -60,6 +80,7 @@ class Image implements ElementInterface, InlinableInterface
         $content = '[!';
         $content .= $this->alt ? '[' . $this->alt . ']' : '';
         $content .= '(' . $this->path . ')]';
+
         if ($this->link || $this->title) {
             $content .= '(';
             $content .= $this->link ? $this->link : '';
