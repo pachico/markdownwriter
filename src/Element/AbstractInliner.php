@@ -59,5 +59,4 @@ abstract class AbstractInliner implements ElementInterface
 
         return $this;
     }
-
 }
