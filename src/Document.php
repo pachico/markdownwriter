@@ -69,6 +69,6 @@ class Document
 
         $content = $this->toMarkdown();
 
-        return $this->fileSystem->put($fileName, $content);
+        return $this->fileSystem->put($fileName, trim($content));
     }
 }

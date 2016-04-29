@@ -18,52 +18,8 @@ use Pachico\MarkdownWriter\Element\ElementInterface;
  *
  * @see http://daringfireball.net/projects/markdown/syntax#p
  */
-class Paragraph implements ElementInterface
+class Paragraph extends AbstractInliner implements ElementInterface
 {
-
-    /**
-     * @var array|InlinableInterface Content of the paragraph
-     */
-    private $content = [];
-
-    /**
-     * Creates instance of Paragraph
-     *
-     * @throws \InvalidArgumentException
-     */
-    public function __construct()
-    {
-        foreach (func_get_args() as $index => $argument) {
-            if ($argument instanceof InlinableInterface) {
-                $this->content [] = $argument;
-            } elseif (is_string($argument)) {
-                $this->content[] = new Text($argument);
-            } else {
-                throw new \InvalidArgumentException('Argument in position ' . $index . ' '
-                . 'must be instance of Text or string.');
-            }
-        }
-    }
-
-    /**
-     * Adds a text to the paragraph
-     *
-     * @param string|ElementInterface $content Content to be added
-     *
-     * @return Paragraph
-     */
-    public function addContent($content)
-    {
-        if ($content instanceof InlinableInterface) {
-            $this->content [] = $content;
-        } elseif (is_string($content)) {
-            $this->content[] = new Text($content);
-        } else {
-            throw new \InvalidArgumentException('Added content must be instance of Text or string.');
-        }
-
-        return $this;
-    }
 
     /**
      * {@inheritDoc}
