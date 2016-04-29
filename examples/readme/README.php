@@ -28,12 +28,34 @@ $document->add(
 );
 
 $document->add(new El\Paragraph(
-    new El\Text('What it is: ', El\Text::BOLD), new El\Text('a markdown writer.')
+    new El\Text('What it is: ', El\Text::BOLD), new El\Text('a markdown writer.'),
+    new El\Text('What it isn\'t: ', El\Text::BOLD), new El\Text('a markdown parser.')
 ));
 
 $document->add(new El\Paragraph(
-    new El\Text('What it isn\'t: ', El\Text::BOLD), new El\Text('a markdown parser.')
+    new El\Text('Why?', El\Text::BOLD),
+    'Because coding it was fun and because you might want to programmatically write documentation, blog entries, etc. '
+    . ' with data that comes from a databases, csv files, etc. More and more there are static site generators that use'
+    . ' markdown as source so, I thought I would give it a try.'
 ));
+
+// Add Index
+$document->add(new El\H2('Table of Contents'));
+$document->add((new El\Lizt())
+    ->addUnorderedItem(new El\Link('Install', '#install'))
+    ->addUnorderedItem(new El\Link('Usage', '#usage'))
+    ->levelDown()
+    ->addUnorderedItem(new El\Link('Headers', '#headers'))
+    ->addUnorderedItem(new El\Link('Paragraph', '#paragraph'))
+    ->addUnorderedItem(new El\Link('Blockquote', '#blockquote'))
+    ->addUnorderedItem(new El\Link('Code', '#code'))
+    ->addUnorderedItem(new El\Link('Horizontal rule', '#horizontal-rule'))
+    ->addUnorderedItem(new El\Link('Image', '#image'))
+    ->addUnorderedItem(new El\Link('Link', '#link'))
+    ->addUnorderedItem(new El\Link('Lizt (list)', '#lizt-list'))
+    ->addUnorderedItem(new El\Link('Output', '#output'))
+    ->addUnorderedItem(new El\Link('Example', '#example'))
+);
 
 // Add Install
 $document->add(new El\H2('Install'));
@@ -69,8 +91,28 @@ $document->add(new El\Code(file_get_contents($examplesFolder . '06-hrule.php'), 
 $document->add(new El\Paragraph('Will output:'));
 $document->add(new El\Code(file_get_contents($examplesFolder . '06-hrule.md')));
 //
-$document->add(new El\H3('Complete example'));
-$document->add(new El\Code(file_get_contents($examplesFolder . '01-simple.php'), El\Code::PHP));
+$document->add(new El\H3('Image'));
+$document->add(new El\Code(file_get_contents($examplesFolder . '07-image.php'), El\Code::PHP));
+$document->add(new El\Paragraph('Will output:'));
+$document->add(new El\Code(file_get_contents($examplesFolder . '07-image.md')));
+//
+$document->add(new El\H3('Link'));
+$document->add(new El\Code(file_get_contents($examplesFolder . '08-link.php'), El\Code::PHP));
+$document->add(new El\Paragraph('Will output:'));
+$document->add(new El\Code(file_get_contents($examplesFolder . '08-link.md')));
+//
+$document->add(new El\H3('Lizt (list)'));
+$document->add(new El\Blockquote('Lists are called ', new El\Text('Lizt', El\Text::ITALIC), ' since the word "list" is a php reserved word.'));
+$document->add(new El\Code(file_get_contents($examplesFolder . '09-lizt.php'), El\Code::PHP));
+$document->add(new El\Paragraph('Will output:'));
+$document->add(new El\Code(file_get_contents($examplesFolder . '09-lizt.md')));
+//
+$document->add(new El\H3('Output'));
+$document->add(new El\Code(file_get_contents($examplesFolder . '10-output.php'), El\Code::PHP));
+$document->add(new El\Blockquote('Check ', new El\Link('FlySystem', 'http://flysystem.thephpleague.com/'), ' for the complete list of adapters.'));
+//
+$document->add(new El\H3('Example'));
+$document->add(new El\Code(file_get_contents($examplesFolder . '01-example.php'), El\Code::PHP));
 $document->add(new El\Paragraph(
     'This README file has been written using this package.', 'Check the examples folder for more details.'
 ));
@@ -100,7 +142,6 @@ $document->add(new El\Paragraph('If you discover any security related issues, '
 $document->add(new El\H2('Credits'));
 $document->add((new El\Lizt())
         ->addUnorderedItem(new El\Link('Mariano F.co Benítez Mulet', 'https://github.com/pachico'))
-        ->addUnorderedItem(new El\Link('All Contributors', 'link-contributors'))
 );
 
 // Add Licence

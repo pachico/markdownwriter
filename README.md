@@ -4,9 +4,24 @@
 
 Php package to write markdown documents.
 
-**What it is:** a markdown writer.
+**What it is:** a markdown writer. **What it isn't:** a markdown parser.
 
-**What it isn't:** a markdown parser.
+**Why?** Because coding it was fun and because you might want to programmatically write documentation, blog entries, etc.  with data that comes from a databases, csv files, etc. More and more there are static site generators that use markdown as source so, I thought I would give it a try.
+
+## Table of Contents
+
+* [Install](#install)
+* [Usage](#usage)
+  * [Headers](#headers)
+  * [Paragraph](#paragraph)
+  * [Blockquote](#blockquote)
+  * [Code](#code)
+  * [Horizontal rule](#horizontal-rule)
+  * [Image](#image)
+  * [Link](#link)
+  * [Lizt (list)](#lizt-list)
+  * [Output](#output)
+  * [Example](#example)
 
 ## Install
 
@@ -221,7 +236,159 @@ Will output:
 ___
 ```
 
-### Complete example
+### Image
+
+
+```php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Pachico\MarkdownWriter\Document;
+use League\Flysystem\Adapter;
+use Pachico\MarkdownWriter\Element as El;
+
+// Create Document
+$document = new Document;
+
+// Create an image element
+$image = new El\Image(
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Markdown-mark.svg/208px-Markdown-mark.svg.png', // path
+    'https://es.wikipedia.org/wiki/Markdown', // link
+    'Markdown logo', // alt text
+    'Markdown logo' // title
+);
+
+// link, alt text and title are optional parameters
+
+// Add it to the document
+$document->add($image);
+
+$adapter = new Adapter\Local(__DIR__);
+$document->save($adapter, basename(__FILE__, 'php') . 'md');
+
+```
+
+Will output:
+
+
+```
+[![Markdown logo](https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Markdown-mark.svg/208px-Markdown-mark.svg.png)](https://es.wikipedia.org/wiki/Markdown "Markdown logo")
+```
+
+### Link
+
+
+```php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Pachico\MarkdownWriter\Document;
+use League\Flysystem\Adapter;
+use Pachico\MarkdownWriter\Element as El;
+
+// Create Document
+$document = new Document;
+
+// Create a link
+$link = new El\Link('Markdown Writer!', 'https://github.com/pachico/markdownwriter');
+
+// Add it to the document
+$document->add($link);
+
+$adapter = new Adapter\Local(__DIR__);
+$document->save($adapter, basename(__FILE__, 'php') . 'md');
+
+```
+
+Will output:
+
+
+```
+[Markdown Writer!](https://github.com/pachico/markdownwriter)
+```
+
+### Lizt (list)
+
+> Lists are called  _Lizt_  since the word "list" is a php reserved word.
+
+
+```php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Pachico\MarkdownWriter\Document;
+use League\Flysystem\Adapter;
+use Pachico\MarkdownWriter\Element as El;
+
+// Create Document
+$document = new Document;
+
+// Create a list
+$list = new El\Lizt;
+$list->addOrderedItem('First item.')
+    ->addOrderedItem('Second item.')
+    ->addOrderedItem('Third item.')
+    ->levelDown() // Go one level down/right
+    ->addUnorderedItem('Some more.')
+    ->addUnorderedItem('Some more again.')
+    ->levelUp()
+    ->addOrderedItem('Fourth item.');
+
+// Add it to the document
+$document->add($list);
+
+$adapter = new Adapter\Local(__DIR__);
+$document->save($adapter, basename(__FILE__, 'php') . 'md');
+
+```
+
+Will output:
+
+
+```
+1. First item. 
+2. Second item. 
+3. Third item. 
+  * Some more. 
+  * Some more again. 
+4. Fourth item.
+```
+
+### Output
+
+
+```php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use Pachico\MarkdownWriter\Document;
+use League\Flysystem\Adapter;
+
+// Create Document
+$document = new Document();
+
+//...
+
+// To fetch the markdown as a string simply
+$markdown = $document->toMarkdown();
+
+// To save it somewhere we use the great FlySystem abstraction layer:
+// Define file system adapter
+$adapter = new Adapter\Local(__DIR__);
+
+// Inject it to the save method and it will be persisted
+$document->save($adapter, basename(__FILE__, 'php') . 'md');
+
+// Check http://flysystem.thephpleague.com/ to see the adapters list
+```
+
+> Check  [FlySystem](http://flysystem.thephpleague.com/) for the complete list of adapters.
+
+### Example
 
 
 ```php
@@ -279,7 +446,6 @@ If you discover any security related issues, please email pachicodev@gmail.com i
 ## Credits
 
 * [Mariano F.co Benítez Mulet](https://github.com/pachico)
-* [All Contributors](link-contributors)
 
 ## Licence
 
