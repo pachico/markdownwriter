@@ -19,6 +19,10 @@ $document->add(new El\H1('MarkdownWriter'));
 $document->add(new El\Paragraph(
     new El\Image(
     'https://travis-ci.org/pachico/markdownwriter.svg?branch=master', 'https://travis-ci.org/pachico/markdownwriter', 'Build Status', 'Markdown Writer'
+    ),
+    ' ',
+    new El\Image(
+    'https://styleci.io/repos/57068965/shield', 'https://styleci.io/repos/57068965', 'StyleCI', 'StyleCI'
     )
 ));
 

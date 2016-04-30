@@ -1,6 +1,6 @@
 # MarkdownWriter
 
-[![Build Status](https://travis-ci.org/pachico/markdownwriter.svg?branch=master)](https://travis-ci.org/pachico/markdownwriter "Markdown Writer")
+[![Build Status](https://travis-ci.org/pachico/markdownwriter.svg?branch=master)](https://travis-ci.org/pachico/markdownwriter "Markdown Writer")  [![StyleCI](https://styleci.io/repos/57068965/shield)](https://styleci.io/repos/57068965 "StyleCI")
 
 Php package to write markdown documents.
 
