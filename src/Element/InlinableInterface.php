@@ -16,5 +16,4 @@ namespace Pachico\MarkdownWriter\Element;
  */
 interface InlinableInterface
 {
-
 }
